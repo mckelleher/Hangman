@@ -20,31 +20,62 @@
     // Creates an array that lists out all of the options (in the alphabet).
 
 var computerChoice = ["a", "b", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "v", "t", "u", "v", "w", "x", "y","z"]
- 
- console.log(computerChoice);
 
 
-    // Creating variables to hold the number of wins, losses, and ties. They start at 0.
+
+
+    // Creating variables to hold the number of wins, losses. They start at 0.
     var wins = 0;
     var losses = 0;
-    var ties = 0;
+   
+    // Creating variables to hold the number of guesses. They start at 9.
+ 
 
-    // This function is run whenever the user presses a key.
+
+    // This function is run whenever the user presses a key. INSERTED ON 5/10
+
+var guessesTaken = 0;
+var remainingGuesses = 9;
+
+document.onkeyup = function(event) {
+ 
+}
+
+
+
+
+
+// ORIGINAL CODE
+
     document.onkeyup = function(event) {
+
+      guessesTaken++;
+
+    
+
 
       // Determines which key was pressed.
       var userGuess = event.key;
-
-    var userGuesses =(event.key);
+      
 
       // Randomly chooses a choice from the options array. This is the Computer's guess.
       var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
 
       console.log(computerGuess)
 
+
+
+
+//Logic
 if(computerGuess === userGuess) {
-    win++
-};
+    wins++;
+
+}
+if(guessesTaken === 9) {
+  losses++;
+  }  
+
+    
 
 
         // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses/ties.
@@ -52,13 +83,14 @@ if(computerGuess === userGuess) {
           "<p>You chose: " + userGuess + "</p>" +
           "<p>The computer chose: " + computerGuess + "</p>" +
           "<p>wins: " + wins + "</p>" +
-          "<p>losses: " + losses + "</p>";
+          "<p>losses: " + losses + "</p>" +
+          "<p>remaining guesses: " + (remainingGuesses - guessesTaken) + "</p>";
 
 
         // Set the inner HTML contents of the #game div to our html string
         document.querySelector("#game").innerHTML = html;
-      }
-    ;
+      };
+
   </script>
 
 </body>
